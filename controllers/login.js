@@ -9,8 +9,8 @@ var User = require('../models/user')
 
 //route for loginpage
 
-router.get('/', function(req, res) {
-  res.send('homepage')
+router.get('/login', function(req, res) {
+  res.render('login')
 })
 
 module.exports = router

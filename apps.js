@@ -25,13 +25,14 @@ app.use(bodyParser.urlencoded({
 
 //transform json data to req.body
 app.use(bodyParser.json())
-
-app.get('/', function (req, res) {
-  res.render('')
-})
+//
 
 // setup the ej template
 app.set('view engine', 'ejs')
+
+// app.get('/', function (req, res) {
+//   res.render('')
+// })
 
 //setup method override
 var methodOverride = require('method-override')
