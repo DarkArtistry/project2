@@ -3,17 +3,17 @@ var express = require('express')
 var app = express()
 var port = process.env.PORT || 4000
 
-// // mongoose set-up
-// var mongoose = require('mongoose')
-// var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost/test'
-// mongoose.connect(dbURI)
+// mongoose set-up
+var mongoose = require('mongoose')
+var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost/project2'
+mongoose.connect(dbURI)
 
 // check if our connection is okay
-// var db = mongoose.connection
-// db.on('error', console.error.bind(console, 'connection error:'))
-// db.once('open', function () {
-//   console.log('really connected')
-// })
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'))
+db.once('open', function () {
+  console.log('really connected')
+})
 
 //set-up body-bodyparse
 var bodyParser = require('body-parser')
@@ -39,7 +39,7 @@ var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 //require the controller later
-var login = require('./controllers/login')
+var login = require('./controllers/login_controller')
 app.use(login)
 
 //set up final error message to response

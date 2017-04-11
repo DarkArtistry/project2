@@ -8,9 +8,10 @@ var router = express.Router()
 var User = require('../models/user')
 
 //route for loginpage
-
 router.get('/login', function(req, res) {
-  res.render('login')
+  res.redirect('login')
 })
+
+
 
 module.exports = router
