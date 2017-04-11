@@ -38,6 +38,8 @@ var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 //require the controller later
+var login = require('./controllers/login')
+app.use(login)
 
 //set up final error message to response
 app.use(function(req, res) {
