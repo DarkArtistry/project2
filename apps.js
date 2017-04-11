@@ -30,17 +30,29 @@ app.use(bodyParser.json())
 // setup the ej template
 app.set('view engine', 'ejs')
 
+// setting the layout structure
+var ejsLayouts = require('express-ejs-layouts')
+app.use(ejsLayouts)
+
 // app.get('/', function (req, res) {
 //   res.render('')
 // })
+
+// this sets a static directory for the views
+var path = require('path')
+app.use(express.static(path.join(__dirname, 'public')));
 
 //setup method override
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
-//require the controller later
+//connect to login controller
 var login = require('./controllers/login_controller')
 app.use(login)
+
+//connect to login controller
+var signup = require('./controllers/signup_controller')
+app.use(signup)
 
 //set up final error message to response
 app.use(function(req, res) {

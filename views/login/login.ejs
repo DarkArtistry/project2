@@ -1,0 +1,37 @@
+<div class="signup-container">
+    <div class="signuph1">
+        <h1>Create a New Account</h1>
+    </div>
+    <div class="signuph2">
+        <h2>Knowledge is Power</h2>
+    </div>
+    <div class="signupbox">
+        <div class="errorsignup">
+            <div>display error message here</div>
+        </div>
+        <div class="formbox">
+            <form action="/signup" method="POST">
+                <div class="fullnamesignup signuplines">
+                    <div class="firstnamesignup">
+                        <input class="createfields firstnamesignup" type="text" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="lastnamesignup">
+                        <input class="createfields lastnamesignup" type="text" name="lastname" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="emailsignup signuplines">
+                    <input type="text" class="createfields" name="email" placeholder="Email Address">
+                </div>
+                <div class="passwordsignup signuplines">
+                    <input type="password" class="createfields" name="password" placeholder="Password">
+                </div>
+                <div class="authcodesignup signuplines">
+                    <input type="password" class="createfields" name="authcode" placeholder="Authorization Code (Optional)">
+                </div>
+                <div class="signuplines">
+                    <button class="buttonsignup" type="submit">CREATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

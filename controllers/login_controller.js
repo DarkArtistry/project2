@@ -1,17 +1,14 @@
-//getting admin loginpage
+// getting admin loginpage
 
-var express= require('express')
+var express = require('express')
 var router = express.Router()
 
-//setup user
-
-var User = require('../models/user')
-
-//route for loginpage
-router.get('/login', function(req, res) {
-  res.render('login')
-})
-
-
+// route for loginpage
+router.route('/login')
+  .get(function (req, res) {
+    res.render('login/login')
+  }).post(function(req, res){
+    res.send('logged in!')
+  })
 
 module.exports = router

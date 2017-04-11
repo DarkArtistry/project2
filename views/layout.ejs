@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Express Site</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h1><a href="#home">I <3 Coding</a></h1>
+        </div>
+        <div style="float:right" class="logindiv">
+            <form action="/login" method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="emaillogin">Email</label></td>
+                            <td><label for="passwordinput">Password</label></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input id="emaillogin" type="text"></td>
+                            <td><input id="passwordinput" type="password"></td>
+                            <td><button type="submit">Login</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </nav>
+    <%- body %>
+</body>
+
+</html>

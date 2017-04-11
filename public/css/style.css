@@ -1,0 +1,79 @@
+html {}
+
+body {
+  background-color: white;
+  padding-right: 120px;
+  padding-left: 30px;
+  margin: 0;
+}
+
+nav {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+nav div a {
+  text-decoration: none;
+  color: black;
+  overflow: hidden;
+}
+
+nav div {
+  display: inline-block;
+}
+
+.signup-container {
+  font-family: sans-serif;
+  float: right;
+  width: 400px;
+  height: 557px;
+}
+
+.logindiv {
+  width: 392px;
+  height: 65px;
+}
+
+.signuplines {
+  width: 399px;
+  height: 49px;
+}
+
+.firstnamesignup {
+  display: inline-block;
+  float: left;
+}
+
+.lastnamesignup {
+  display: inline-block;
+  float: right;
+}
+
+.createfields {
+  border-radius: 5px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.buttonsignup {
+  min-width: 194px;
+  font-size: 28px;
+  background: linear-gradient(#67ae55, #578843);
+  background-color: #69a74e;
+  box-shadow: inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
+  border: 1px solid;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: 1px;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+}
+
+.errorsignup{
+  color: red;
+}

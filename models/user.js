@@ -21,10 +21,10 @@ var userSchema = new mongoose.Schema({
     required: [true, 'password is required to be filled'],
     match: [/^([a-zA-Z0-9@*#]{8,15})$/, 'Password must consists of at least 8 characters and not more than 15 characters.']
   },
-  cocode:{
+  authcode:{
     type: String,
     required: false,
-    match: '12345678'
+    // match: 'asdf'
   }
 })
 
