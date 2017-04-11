@@ -15,6 +15,7 @@
     "ejs": "^2.5.6",
     "ejs-layouts": "0.0.1",
     "express": "^4.15.2",
+    "express-ejs-layouts": "^2.3.0",
     "method-override": "^2.3.8",
     "mongoose": "^4.9.4",
     "nodemon": "^1.11.0"
