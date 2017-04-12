@@ -7,6 +7,7 @@ var port = process.env.PORT || 4000
 var mongoose = require('mongoose')
 var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost/project2'
 mongoose.connect(dbURI)
+mongoose.Promise = global.Promise
 
 // check if our connection is okay
 var db = mongoose.connection
@@ -27,12 +28,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 //
 
-// setup the ej template
-app.set('view engine', 'ejs')
-
 // setting the layout structure
 var ejsLayouts = require('express-ejs-layouts')
 app.use(ejsLayouts)
+
+// setup the ej template
+app.set('view engine', 'ejs')
 
 // app.get('/', function (req, res) {
 //   res.render('')
@@ -46,13 +47,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
-//connect to login controller
-var login = require('./controllers/login_controller')
-app.use(login)
+const signupRouter = require('./routes/signup_router')
+app.use(signupRouter)
 
 //connect to login controller
-var signup = require('./controllers/signup_controller')
-app.use(signup)
+const loginRouter = require('./routes/login_router')
+app.use(loginRouter)
 
 //set up final error message to response
 app.use(function(req, res) {
