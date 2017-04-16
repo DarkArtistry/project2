@@ -1,0 +1,34 @@
+<div class="new-article-wrapper">
+    <form action="/newarticle" method="POST">
+        <div>
+            <input class="articlefields" type="text" name="header" placeholder="Input Article Header">
+        </div>
+        <div>
+            <textarea class="articlefields profiletextarea" name="content" placeholder="Input article context "></textarea>
+        </div>
+        <div>
+            <input class="articlefields" type="text" name="image" placeholder="Input GIF URL">
+        </div>
+        <div>
+            <button class="articlefields" type="submit">Post</button>
+        </div>
+    </form>
+</div>
+
+
+<% articles.forEach(function(news){ %>
+
+    <div class="singlearticle">
+        <div>
+            <img src="<%- news.image %>" class="articlefields">
+        </div>
+        <div>
+            <h2 class="articlefields headers"><%- news.header %></h2>
+        </div>
+        <div>
+            <p class="articlefields">
+                <%- news.content %>
+            </p>
+        </div>
+    </div>
+    <% }) %>

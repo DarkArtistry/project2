@@ -1,6 +1,6 @@
 /*.loginpagewrapper */
 html {
-  background: url('https://i.giphy.com/v2xIous7mnEYg.gif') no-repeat center center fixed;
+  /*background: url('https://i.giphy.com/v2xIous7mnEYg.gif') no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -19,6 +19,7 @@ body {
 }
 
 nav {
+  width: 100%;
   border-bottom: 1px solid black;
   font-family: sans-serif;
   margin: 0;
@@ -129,4 +130,51 @@ button[type="submit"]:hover {
 .animated {
     animation-fill-mode: both;
     animation-duration: 1s;
+}
+
+.homepagewrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-wrapper{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.articlefields {
+  margin: 0;
+  width: 100%;
+  font-size: 15px;
+  border: 0.5px solid grey;
+}
+
+.profilebanner-wrapper {
+  background-color: rgba(152, 88, 20, 0.65);
+  min-height: 100px;
+  height: 180px;
+}
+
+.profiletextarea{
+  width: 100%;
+  height: 150px;
+  resize: none;
+}
+
+.new-article-wrapper {
+  background-color: grey;
+}
+.singlearticle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.headers {
+  font-size: 28px;
+}
+
+.newsfeed {
+  width: 40%;
+  margin: 0 auto;
 }

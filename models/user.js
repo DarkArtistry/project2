@@ -43,17 +43,40 @@ var userSchema = new mongoose.Schema({
     default: false,
     required: true
   },
-  posts: {
+  articles: [{
     type: mongoose.Schema.ObjectId,
-    ref: 'Post',
-    required: false
-  },
-  coments: {
+    ref: 'Article'
+  }],
+  coments: [{
     type: mongoose.Schema.ObjectId,
     ref: 'Coment',
-    required: false
-  }
+  }]
 })
+
+// hash middleware when creating user
+var bcrypt = require('bcrypt')
+userSchema.pre('save', function(next) {
+  var user = this
+  var hash = bcrypt.hashSync(user.password, 10)
+  user.password = hash
+  next()
+})
+
+//give the model a instance method to check password when logging in
+userSchema.methods.validPassword = function(givenPassword) {
+  var hashedpassword = this.password
+  return bcrypt.compareSync(givenPassword, hashedpassword)
+}
+
+userSchema.statics.findByEmail = function(givenEmail, next) {
+  this.findOne({
+    email: givenEmail
+  }, function(err, foundUser) {
+    if (err) return next(err)
+
+    next(null, foundUser)
+  })
+}
 
 var User = mongoose.model('User', userSchema)
 

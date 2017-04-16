@@ -1,14 +1,14 @@
 var mongoose = require('mongoose')
 
-var postSchema = mongoose.Schema({
+var articleSchema = mongoose.Schema({
   image: String,
-  title: {
+  header: {
     type: String,
-    required: true,
+    required: true
   },
   isheadline: {
-    type: Boolean,
-    default: false,
+    type: Number,
+    default: 1,
     required: true
   },
   content: {
@@ -22,10 +22,10 @@ var postSchema = mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true,
+    required: true
   }
 })
 
-var Post = mongoose.model('Post', postSchema)
+var Article = mongoose.model('Article', articleSchema)
 
-module.exports = Post
+module.exports = Article
