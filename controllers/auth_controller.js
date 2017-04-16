@@ -12,7 +12,6 @@ function homepage (req, res, next) {
   Article.find({}).populate('user').sort({
     date: 'desc'
   }).exec(function (err, allposts) {
-
     res.render('homepage/homepage', {
       isloggedin: (!(!req.user)),
       isadmin: req.user.isadmin,
@@ -126,6 +125,13 @@ function newarticle (req, res) {
   })
 }
 
+function deletearticle (req, res) {
+  Article.findByIdAndRemove(req.params.id, function (err, targetarticle) {
+    if (err) console.error(err)
+    res.redirect('/profile')
+  })
+}
+
 module.exports = {
   logged: logged,
   loggingin: loggingin,
@@ -133,5 +139,6 @@ module.exports = {
   loggingout: loggingout,
   create: create,
   getprofile: getprofile,
-  newarticle: newarticle
+  newarticle: newarticle,
+  deletearticle: deletearticle
 }

@@ -39,4 +39,7 @@ router.route('/profile')
 router.route('/newarticle')
 .post(controller.newarticle)
 
+router.route('/:id')
+.delete(controller.deletearticle)
+
 module.exports = router

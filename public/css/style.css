@@ -178,3 +178,12 @@ button[type="submit"]:hover {
   width: 40%;
   margin: 0 auto;
 }
+
+.articleimage {
+  height: 300px;
+}
+
+.deletepost {
+  position: relative;
+
+}

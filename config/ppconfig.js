@@ -27,24 +27,24 @@ passport.use('local', new LocalStrategy({
   User.findOne({
     email: givenemail
   }, function (err, data) {
-    // console.log(givenemail)
-    // console.log(data)
-    // console.log('there is an error')
+    console.log(givenemail)
+    console.log(data)
+    console.log('there is an error')
     if (err) {
-      // console.error(err)
+      console.error(err)
       return next(err)
     }
 
     // If no user is found
     if (!data) {
       // console.log(data)
-      // console.log('cant find data')
+      console.log('cant find data')
       return next(null, false)
     }
 
     // Check if the password is correct
     if (!data.validPassword(password)) {
-      // console.log('no valid password')
+      console.log('no valid password')
       return next(null, false)
     }
 
