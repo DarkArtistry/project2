@@ -22,7 +22,7 @@ router.route('/signup')
 .post(controller.create)
 
 // require the authorization middleware at the top of the page
-var isLoggedIn = require('../middleware/isLoggedIn')
+var isLoggedIn = require('../middleware/isloggedin')
 
 router.use(isLoggedIn)
 // anything below here requires the user to be logged in
