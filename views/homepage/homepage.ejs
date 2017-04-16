@@ -1,18 +1,23 @@
 <div class='homepagewrapper'>
     <div class="newsfeed">
-        <% articles.forEach(function(news){%>
+        <% articles.forEach(function(news){ %>
+
             <div class="singlearticle">
-                <div>
-                    <img src="<%- news.image %>" class="articlefields">
-                </div>
-                <div>
-                    <h2 class="articlefields headers"><%- news.header %></h2>
-                </div>
-                <div>
-                    <p class="articlefields">
-                        <%- news.content %>
-                    </p>
-                </div>
+                <form method="POST" action="/<%-news.id%>?_method=DELETE">
+                    <div>
+                        <% if(news.image) { %>
+                            <img src="<%- news.image %>" class="articlefields articleimage">
+                            <% } %>
+                    </div>
+                    <div>
+                        <h2 class="articlefields headers"><%- news.header %></h2>
+                    </div>
+                    <div>
+                        <p class="articlefields">
+                            <%- news.content.replace(/\r\n/g, "<br>") %>
+                        </p>
+                    </div>
+                </form>
             </div>
             <% }) %>
 

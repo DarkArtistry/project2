@@ -20,15 +20,17 @@
     <div class="singlearticle">
         <form method="POST" action="/<%-news.id%>?_method=DELETE">
             <div>
-                <img src="<%- news.image %>" class="articlefields articleimage">
-                <span class="deletepost" style="float: right" name="articleid" value="<%= news.id %>"><button type="submit">Delete Post</button></span>
+                <% if(news.image) { %>
+                    <img src="<%- news.image %>" class="articlefields articleimage">
+                    <% } %>
+                        <span class="deletepost" style="float: right" name="articleid" value="<%= news.id %>"><button type="submit">Delete Post</button></span>
             </div>
             <div>
                 <h2 class="articlefields headers"><%- news.header %></h2>
             </div>
             <div>
                 <p class="articlefields">
-                    <%- news.content %>
+                    <%- news.content.replace(/\r\n/g, "<br>") %>
                 </p>
             </div>
         </form>

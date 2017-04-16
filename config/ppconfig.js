@@ -27,10 +27,10 @@ passport.use('local', new LocalStrategy({
   User.findOne({
     email: givenemail
   }, function (err, data) {
-    console.log(givenemail)
-    console.log(data)
-    console.log('there is an error')
+    // console.log(givenemail)
+    // console.log(data)
     if (err) {
+      console.log('there is an error')
       console.error(err)
       return next(err)
     }

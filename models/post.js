@@ -23,7 +23,11 @@ var articleSchema = mongoose.Schema({
   date: {
     type: Date,
     required: true
-  }
+  },
+  coments: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Coment'
+  }]
 })
 
 var Article = mongoose.model('Article', articleSchema)

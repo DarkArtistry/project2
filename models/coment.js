@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
 var comentSchema = mongoose.Schema({
   content: {
     type: String,
-    required: true
+    required: true,
+    maxlength: [250, 'can\'t exceed 250 characters for comments']
   },
   user: {
     type: mongoose.Schema.ObjectId,
@@ -12,6 +13,11 @@ var comentSchema = mongoose.Schema({
   },
   date: {
     type: Date,
+    required: true
+  },
+  post: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Article',
     required: true
   }
 })
