@@ -11,8 +11,48 @@ html {
   margin: 0;*/
 }
 
+.dropbtn {
+    background-color: #e9ebee;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+#options {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    /*background-color: #f9f9f9;*/
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 1;
+    right: 0;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 body {
-  background-color: rgba(204, 177, 97, 0.14);
+  /*background-color: rgba(204, 177, 97, 0.14);*/
+  background-color: #e9ebee;
   padding-right: 120px;
   padding-left: 30px;
   margin: 0;
@@ -143,10 +183,10 @@ button[type="submit"]:hover {
 }
 
 .articlefields {
+  background-color: white;
   margin: 0;
   width: 100%;
   font-size: 15px;
-  border: 0.5px solid grey;
 }
 
 .profilebanner-wrapper {
@@ -165,12 +205,13 @@ button[type="submit"]:hover {
   background-color: grey;
 }
 .singlearticle {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: white;
+  background-color: rgba(187, 184, 184, 0.47);
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .headers {
+  background-color: white;
   font-size: 28px;
 }
 
@@ -186,4 +227,50 @@ button[type="submit"]:hover {
 .deletepost {
   position: relative;
 
+}
+
+.navlogo {
+  font-size: 38px;
+  font-family: 'Times New Roman', 'Georgia', 'Serif';
+}
+
+.comentbox {
+background-color: #f6f7f9;
+padding: 5px;
+}
+
+.comentinput {
+  width: 100%;
+  font-size: 14px;
+}
+
+.profilelink{
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.profileeditwrapper{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 8%;
+  font-family: sans-serif;
+}
+
+.editfield{
+  text-align: center;
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.editfields {
+  background-color: white;
+  margin: 0;
+  width: 100%;
+  font-size: 28px;
+}
+
+.updatebutton {
+  border-radius: 20px;
 }

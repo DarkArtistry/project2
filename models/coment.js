@@ -4,7 +4,7 @@ var comentSchema = mongoose.Schema({
   content: {
     type: String,
     required: true,
-    maxlength: [250, 'can\'t exceed 250 characters for comments']
+    maxlength: [150, 'can\'t exceed 250 characters for comments']
   },
   user: {
     type: mongoose.Schema.ObjectId,

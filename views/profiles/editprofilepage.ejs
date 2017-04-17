@@ -1,0 +1,25 @@
+<div class="profileeditwrapper">
+    <form action="/editprofile/<%-userid%>?_method=PUT" method="POST">
+        <div class="editfield">
+            <label class="editlabel" for="firstnameedit">First Name : <%- firstname %></label>
+            <input class="editfields" type="text" name="firstname" value="" id="firstnameedit" placeholder="Change First Name">
+        </div>
+        <div class="editfield">
+            <label class="editlabel" for="lastnameedit">Last Name : <%- lastname %></label>
+            <input class="editfields" type="text" name="lastname" value="" id="lastnameedit" placeholder="Change Last Name">
+        </div>
+        <div class="editfield">
+            <label class="editlabel" for="emailedit">Email : <%- email %></label>
+            <input class="editfields" type="text" name="email" value="" id="emailedit" placeholder="Change Email">
+        </div>
+        <div class="editfield">
+            <label class="editlabel" for="passwordedit">Password : </label>
+            <input class="editfields" type="text" name="passwordedit" value="" id="passwordedit" placeholder="Change Password">
+        </div>
+        <div class="editfield">
+            <label class="editlabel" for="authcode">Authentication Code</label>
+            <input class="editfields" type="text" name="authcode" value="" id="authcode" placeholder="Key in Journalist/Editor Authorization Code (Optional)">
+        </div>
+        <button class="editfields updatebutton" type="submit">Update</button>
+    </form>
+</div>

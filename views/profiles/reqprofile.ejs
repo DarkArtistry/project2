@@ -1,5 +1,9 @@
-<div class='homepagewrapper'>
-    <div class="newsfeed">
+<div class="profile-wrapper">
+
+    <div class="profilebanner-wrapper">
+        <h1><%= firstname %> <%= lastname %> !</h1>
+    </div>
+    <div>
         <% articles.forEach(function(news){ %>
 
             <div class="singlearticle">
@@ -27,7 +31,7 @@
                     <%  news.coments.forEach(function(coment){ %>
                         <div>
                             <p>
-                                <span><a class="profilelink" href="/profile/<%- coment.user.id %>"><%- coment.user.firstname %>:</a></span>
+                                <span><a class="profilelink" href="/profile/<%- coment.user %>"><%- coment.user.firstname %>:</a></span>
 
                                 <%- coment.content %>
                             </p>
@@ -35,10 +39,5 @@
                         <%  }) %>
                 </div>
                 <% }) %>
-
-                    <form action='/logout' method='GET'>
-                        <button type='submit'>Logout</button>
-                    </form>
             </div>
     </div>
-</div>

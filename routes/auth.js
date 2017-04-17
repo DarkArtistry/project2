@@ -6,7 +6,7 @@ var controller = require('../controllers/auth_controller')
 //handle request to logout
 router.route('/logout')
 .get(function (req, res) {
-  console.log(req.session)
+  // console.log(req.session)
   req.logout()
   console.log('logged out')
   res.redirect('/login')
@@ -32,14 +32,32 @@ router.route('/')
 .get(controller.homepage)
 .post(controller.homepage)
 
-//handle profile request
+//handle user own's profile request
 router.route('/profile')
 .get(controller.getprofile)
 
+// handle other users profile page
+router.route('/profile/:id')
+.get(controller.findprofile)
+
+//handle create article request
 router.route('/newarticle')
 .post(controller.newarticle)
 
+//handle delete request for article
 router.route('/:id')
 .delete(controller.deletearticle)
+
+//handle comment request
+router.route('/addcomment/:id')
+.post(controller.addcoment)
+
+//handle edit profile request
+router.route('/editprofilepage')
+.get(controller.editprofilepage)
+
+//handle update profile request
+router.route('/editprofile/:id')
+.put(controller.updateprofile)
 
 module.exports = router
