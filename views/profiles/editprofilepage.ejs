@@ -4,6 +4,11 @@
         <input type="file" name="profilepic" id="profilepic">
         <input type="submit">
     </form>
+    <form enctype="multipart/form-data" action="/newprofileban" method="POST" class="profilepicform">
+        <label for="profilepic">Change Profile Banner : </label>
+        <input type="file" name="profileban" id="profilepic">
+        <input type="submit">
+    </form>
     <form action="/editprofile/<%-userid%>?_method=PUT" method="POST">
         <div class="editfield">
             <label class="editlabel" for="firstnameedit">First Name : <%- firstname %></label>

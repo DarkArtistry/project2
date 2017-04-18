@@ -69,4 +69,8 @@ router.route('/editprofile/:id')
 router.route('/newprofilepic')
 .post(upload.single('profilepic'), controller.newprofilepic)
 
+//handle request update profile banner
+router.route('/newprofileban')
+.post(upload.single('profileban'), controller.newprofileban)
+
 module.exports = router

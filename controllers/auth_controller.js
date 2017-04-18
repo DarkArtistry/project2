@@ -110,6 +110,7 @@ function getprofile (req, res) {
       firstname: req.user.firstname,
       lastname: req.user.lastname,
       profilepic: req.user.profilepics,
+      profilebanner: req.user.profilebanner,
       articles: currentUser.articles.sort(function (a, b) {
         return b.date - a.date
       })
@@ -198,6 +199,7 @@ function findprofile (req, res) {
         date: todate,
         firstname: targetuser.firstname,
         lastname: targetuser.lastname,
+        profilebanner: targetuser.profilebanner,
         profilepic: targetuser.profilepics,
         articles: targetuser.articles.sort(function (a, b) {
           return b.date - a.date
@@ -293,6 +295,21 @@ function newprofilepic (req, res) {
   })
 }
 
+function newprofileban (req, res) {
+  cloudinary.uploader.upload(req.file.path, function (result) {
+
+    User.findByIdAndUpdate(req.user.id, {
+      $set: {
+        profilebanner: result.url
+      }
+    }, function (err, data) {
+      if (err) console.error(err)
+
+      res.redirect('/profile')
+    })
+  })
+}
+
 module.exports = {
   logged: logged,
   loggingin: loggingin,
@@ -306,5 +323,6 @@ module.exports = {
   findprofile: findprofile,
   editprofilepage: editprofilepage,
   updateprofile: updateprofile,
-  newprofilepic: newprofilepic
+  newprofilepic: newprofilepic,
+  newprofileban: newprofileban
 }

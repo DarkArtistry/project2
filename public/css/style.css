@@ -7,10 +7,12 @@
 /*}*/
 
 .facepic {
+  position: relative;
   border-radius: 50%;
   border: 8px white solid;
-  height: 160px;
-  width: 160px;
+  height: 168px;
+  width: 168px;
+  left: -80px;
 }
 
 .dropbtn {
@@ -192,9 +194,12 @@ button[type="submit"]:hover {
 }
 
 .profilebanner-wrapper {
+  background-image: url();
   background-color: rgba(152, 88, 20, 0.65);
   min-height: 100px;
   height: 180px;
+  background: no-repeat center center fixed;
+  background-size: cover;
 }
 
 .profiletextarea{

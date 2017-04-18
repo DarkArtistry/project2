@@ -54,6 +54,9 @@ var userSchema = new mongoose.Schema({
   profilepics: {
     type: String,
     default: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c47.0.160.160/p160x160/10354686_10150004552801856_220367501106153455_n.jpg?oh=620a81f9d346415ad4aa47d56264a7c2&oe=59935B49'
+  },
+  profilebanner: {
+    type: String,
   }
 })
 
