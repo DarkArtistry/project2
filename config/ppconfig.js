@@ -31,7 +31,7 @@ passport.use('local', new LocalStrategy({
     // console.log(data)
     if (err) {
       console.log('there is an error')
-      // console.error(err)
+      console.error(err)
       return next(err)
     }
 

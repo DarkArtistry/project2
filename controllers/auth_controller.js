@@ -3,6 +3,11 @@ var User = require('../models/user')
 var passport = require('../config/ppconfig')
 var Article = require('../models/post')
 var Coment = require('../models/coment')
+var multer = require('multer')
+var upload = multer({
+  dest: './uploads/'
+})
+var cloudinary = require('cloudinary')
 
 // render homepage
 function homepage (req, res, next) {
@@ -104,6 +109,7 @@ function getprofile (req, res) {
       date: todate,
       firstname: req.user.firstname,
       lastname: req.user.lastname,
+      profilepic: req.user.profilepics,
       articles: currentUser.articles.sort(function (a, b) {
         return b.date - a.date
       })
@@ -192,6 +198,7 @@ function findprofile (req, res) {
         date: todate,
         firstname: targetuser.firstname,
         lastname: targetuser.lastname,
+        profilepic: targetuser.profilepics,
         articles: targetuser.articles.sort(function (a, b) {
           return b.date - a.date
         })
@@ -214,16 +221,76 @@ function editprofilepage (req, res) {
 }
 
 function updateprofile (req, res) {
-  User.findById(req.user.id).exec(function (err, targetuser) {
-    if (err) console.error(err)
-    if (req.body.firstname) targetuser.firstname = req.body.firstname
-    if (req.body.lastname) targetuser.lastname = req.body.lastname
-    if (req.body.email) targetuser.email = req.body.email
-    if(req.body.passwordedit) targetuser.password = req.body.passwordedit
-    if (req.body.authcode === 'kennethiscool') targetuser.isadmin = true
-    targetuser.save()
-  })
+  if (req.body.firstname) {
+    User.findByIdAndUpdate(req.user.id, {
+      $set: {
+        firstname: req.body.firstname
+      }
+    }, {
+      new: true
+    }, function (err, data) {
+      if (err) console.error(err)
+    })
+  }
+
+  if (req.body.lastname) {
+    User.findByIdAndUpdate(req.user.id, {
+      $set: {
+        lastname: req.body.lastname
+      }
+    }, {
+      new: true
+    }, function (err, data) {
+      if (err) console.error(err)
+    })
+  }
+
+  if (req.body.email) {
+    User.findByIdAndUpdate(req.user.id, {
+      $set: {
+        email: req.body.email
+      }
+    }, {
+      new: true
+    }, function (err, data) {
+      if (err) console.error(err)
+    })
+  }
+
+  if (req.body.authcode === 'kennethiscool') {
+    User.findByIdAndUpdate(req.user.id, {
+      $set: {
+        isadmin: true
+      }
+    }, {
+      new: true
+    }, function (err, data) {
+      if (err) console.error(err)
+    })
+  }
+
+  if (req.body.passwordedit) {
+    User.findById(req.user.id, function (err, targetuser) {
+      targetuser.password = req.body.passwordedit
+      targetuser.save()
+    })
+  }
   res.redirect('/editprofilepage')
+}
+
+function newprofilepic (req, res) {
+  cloudinary.uploader.upload(req.file.path, function (result) {
+
+    User.findByIdAndUpdate(req.user.id, {
+      $set: {
+        profilepics: result.url
+      }
+    }, function (err, data) {
+      if (err) console.error(err)
+
+      res.redirect('/profile')
+    })
+  })
 }
 
 module.exports = {
@@ -238,5 +305,6 @@ module.exports = {
   addcoment: addcoment,
   findprofile: findprofile,
   editprofilepage: editprofilepage,
-  updateprofile: updateprofile
+  updateprofile: updateprofile,
+  newprofilepic: newprofilepic
 }

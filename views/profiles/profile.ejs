@@ -1,7 +1,9 @@
 <div class="profile-wrapper">
 
     <div class="profilebanner-wrapper">
-        <h1>Welcome ! <%= firstname %> <%= lastname %> !</h1>
+        <img class="facepic" src="<%- profilepic %>">
+        <h1>Welcome ! <%= firstname %>
+            <%= lastname %> !</h1>
     </div>
 
     <% if(isadmin) { %>

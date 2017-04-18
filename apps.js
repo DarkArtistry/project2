@@ -1,6 +1,8 @@
 // express set-uo
 var express = require('express')
 var app = express()
+
+//run npm install dotenv --save
 require('dotenv').config({
   silent: true
 })
@@ -75,6 +77,7 @@ app.use(function (req, res, next) {
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
+//set up path to router
 var authRouter = require('./routes/auth')
 app.use('/', authRouter)
 
@@ -83,6 +86,7 @@ app.use(function (req, res) {
   res.send('Error Found!')
 })
 
+// listen to port
 app.listen(port, function () {
   console.log('app is running on port : ' + port)
 })

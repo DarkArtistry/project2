@@ -1,14 +1,16 @@
-/*.loginpagewrapper */
-html {
-  /*background: url('https://i.giphy.com/v2xIous7mnEYg.gif') no-repeat center center fixed;*/
+/*html {
+  background: url('https://i.giphy.com/v2xIous7mnEYg.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  /*height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;*/
+  background-size: cover;*/
+/*}*/
+
+.facepic {
+  border-radius: 50%;
+  border: 8px white solid;
+  height: 160px;
+  width: 160px;
 }
 
 .dropbtn {
@@ -273,4 +275,9 @@ padding: 5px;
 
 .updatebutton {
   border-radius: 20px;
+}
+
+.profilepicform {
+  font-size: 28px;
+  font-family: sans-serif;
 }

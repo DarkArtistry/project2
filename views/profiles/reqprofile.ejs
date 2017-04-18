@@ -1,6 +1,7 @@
 <div class="profile-wrapper">
 
     <div class="profilebanner-wrapper">
+        <img class="facepic" src="<%- profilepic %>">
         <h1><%= firstname %> <%= lastname %> !</h1>
     </div>
     <div>
@@ -31,7 +32,7 @@
                     <%  news.coments.forEach(function(coment){ %>
                         <div>
                             <p>
-                                <span><a class="profilelink" href="/profile/<%- coment.user %>"><%- coment.user.firstname %>:</a></span>
+                                <span><a class="profilelink" href="/profile/<%- coment.user.id %>"><%- coment.user.firstname %>:</a></span>
 
                                 <%- coment.content %>
                             </p>

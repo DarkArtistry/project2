@@ -1,7 +1,12 @@
 var express = require('express')
 var router = express.Router()
+//npm install passport -- save
+//npm install passport-local --save
 var passport = require('../config/ppconfig')
 var controller = require('../controllers/auth_controller')
+//npm install multer --save
+var multer = require('multer');
+var upload = multer({ dest: './uploads/' });
 
 //handle request to logout
 router.route('/logout')
@@ -59,5 +64,9 @@ router.route('/editprofilepage')
 //handle update profile request
 router.route('/editprofile/:id')
 .put(controller.updateprofile)
+
+//handle request update profile picture
+router.route('/newprofilepic')
+.post(upload.single('profilepic'), controller.newprofilepic)
 
 module.exports = router
