@@ -6,7 +6,7 @@ var passport = require('../config/ppconfig')
 var controller = require('../controllers/auth_controller')
 //npm install multer --save
 var multer = require('multer');
-var upload = multer({ dest: './uploads/' });
+var upload = multer({ dest: './uploads/' })
 
 //handle request to logout
 router.route('/logout')
@@ -70,10 +70,10 @@ router.route('/editprofile/:id')
 
 //handle request update profile picture
 router.route('/newprofilepic')
-.put(upload.single('profilepic'), controller.newprofilepic)
+.post(upload.single('profilepic'), controller.newprofilepic)
 
 //handle request update profile banner
 router.route('/newprofileban')
-.put(upload.single('profileban'), controller.newprofileban)
+.post(upload.single('profileban'), controller.newprofileban)
 
 module.exports = router

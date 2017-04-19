@@ -4,9 +4,7 @@ var passport = require('../config/ppconfig')
 var Article = require('../models/post')
 var Coment = require('../models/coment')
 var multer = require('multer')
-var upload = multer({
-  dest: './uploads/'
-})
+var upload = multer({ dest: './uploads/' })
 var cloudinary = require('cloudinary')
 
 // render homepage
@@ -322,7 +320,9 @@ function updateprofile (req, res) {
 }
 
 function newprofilepic (req, res) {
+  console.log(req.file)
   cloudinary.uploader.upload(req.file.path, function (result) {
+    console.log(result)
     User.findByIdAndUpdate(req.user.id, {
       $set: {
         profilepics: result.url
@@ -331,14 +331,15 @@ function newprofilepic (req, res) {
       new: true
     }, function (err, data) {
       if (err) console.error(err)
-
       res.redirect('/profile')
     })
   })
 }
 
 function newprofileban (req, res) {
+  console.log(req)
   cloudinary.uploader.upload(req.file.path, function (result) {
+    console.log(result.url)
     User.findByIdAndUpdate(req.user.id, {
       $set: {
         profilebanner: result.url
@@ -347,7 +348,6 @@ function newprofileban (req, res) {
       new: true
     }, function (err, data) {
       if (err) console.error(err)
-
       res.redirect('/profile')
     })
   })
