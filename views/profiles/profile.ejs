@@ -8,5 +8,41 @@
 
     <% if(isadmin) { %>
         <% include adminprofile.ejs %>
-            <% } %>
-</div>
+            <% } else { %>
+                <% articles.forEach(function(news){ %>
+
+                    <div class="singlearticle">
+                        <form method="POST" action="/<%-news.id%>?_method=DELETE">
+                            <div>
+                                <% if(news.image) { %>
+                                    <img src="<%- news.image %>" class="articlefields">
+                                    <% } %>
+                            </div>
+                            <div>
+                                <h2 class="articlefields headers"><%- news.header %></h2>
+                            </div>
+                            <div>
+                                <p class="articlefields">
+                                    <%- news.content.replace(/\r\n/g, "<br>") %>
+                                </p>
+                            </div>
+                        </form>
+                        <div class="comentbox">
+                            <form method="POST" action="/addcomment/<%- news.id %>">
+                                <div>
+                                    <input class="comentinput" type="text" maxlength="150" name="content" placeholder="Add a comment">
+                                </div>
+                            </form>
+                            <%  news.coments.forEach(function(coment){ %>
+                                <div>
+                                    <p>
+                                        <span><a class="profilelink" href="/profile/<%- coment.user.id %>"><%- coment.user.firstname %>:</a></span>
+
+                                        <%- coment.content %>
+                                    </p>
+                                </div>
+                                <%  }) %>
+                        </div>
+                        <% }) %>
+                            <% } %>
+                    </div>

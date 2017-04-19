@@ -2,11 +2,11 @@
 var express = require('express')
 var app = express()
 
-//run npm install dotenv --save
+// run npm install dotenv --save
 require('dotenv').config({
   silent: true
 })
-var port = process.env.PORT || 4000
+var port = process.env.PORT || 5000
 
 // mongoose set-up
 var mongoose = require('mongoose')
@@ -67,8 +67,6 @@ var path = require('path')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(function (req, res, next) {
-  // before every route, attach the flash messages and current user to res.locals
-  // res.locals.alerts = req.flash();
   res.locals.currentUser = req.user
   next()
 })
@@ -77,7 +75,13 @@ app.use(function (req, res, next) {
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
-//set up path to router
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*')
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+//   next()
+// })
+
+// set up path to router
 var authRouter = require('./routes/auth')
 app.use('/', authRouter)
 

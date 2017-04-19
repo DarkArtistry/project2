@@ -1,10 +1,10 @@
 <div class="profileeditwrapper">
-    <form enctype="multipart/form-data" action="/newprofilepic" method="POST" class="profilepicform">
+    <form enctype="multipart/form-data" action="/newprofilepic?_method=PUT" method="POST" class="profilepicform">
         <label for="profilepic">Change Profile Picture : </label>
         <input type="file" name="profilepic" id="profilepic">
         <input type="submit">
     </form>
-    <form enctype="multipart/form-data" action="/newprofileban" method="POST" class="profilepicform">
+    <form enctype="multipart/form-data" action="/newprofileban?_method=PUT" method="POST" class="profilepicform">
         <label for="profilepic">Change Profile Banner : </label>
         <input type="file" name="profileban" id="profilepic">
         <input type="submit">

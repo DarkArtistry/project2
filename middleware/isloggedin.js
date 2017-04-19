@@ -6,7 +6,7 @@ module.exports = function (req, res, next) {
     res.redirect('/login')
   } else {
     console.log('you are logged in')
-    console.log(req)
+    // console.log(req)
     // res.render('homepage/homepage')
     next()
   }

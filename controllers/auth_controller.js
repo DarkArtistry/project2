@@ -100,7 +100,20 @@ function create (req, res, next) {
 // render user's profile page
 function getprofile (req, res) {
   var todate = new Date()
-  User.findById(req.user.id).populate('articles').exec(function (err, currentUser) {
+  User.findById(req.user.id).populate({
+    path: 'articles',
+    populate: {
+      path: 'user',
+      model: 'User'
+    },
+    populate: {
+      path: 'coments',
+      populate: {
+        path: 'user',
+        model: 'User'
+      }
+    }
+  }).exec(function (err, currentUser) {
     if (err) console.error(posts)
 
     res.render('profiles/profile', {
@@ -135,9 +148,17 @@ function newarticle (req, res) {
       res.redirect('/')
     } else {
       // FLASH
-      req.user.articles.unshift(newpost)
-      req.user.save()
-      res.redirect('/profile')
+      User.findByIdAndUpdate(req.user.id, {
+        $push: {
+          'articles': newpost
+        }
+      }, {
+        new: true
+      },
+        function (err, data) {
+          console.log(err)
+          res.redirect('/profile')
+        })
       // console.log(newpost)
     }
   })
@@ -158,15 +179,30 @@ function addcoment (req, res) {
     user: req.user.id,
     post: req.params.id
   }, function (err, newcoment) {
-    // if (err) console.error(err)
-    req.user.coments.unshift(newcoment)
-    req.user.save()
-
-    Article.findById(req.params.id, function (err, targetposts) {
-      if (err) console.error(err)
-      targetposts.coments.unshift(newcoment)
-      targetposts.save()
-    })
+    if (err) console.error(err)
+    User.findByIdAndUpdate(req.user.id, {
+      $push: {
+        'coments': newcoment
+      }
+    }, {
+      new: true
+    },
+      function (err, data) {
+        console.log(err)
+      })
+    // the above can bypass the save and therefore not re-hashing my current password
+    // req.user.coments.unshift(newcoment)
+    // req.user.save()
+    Article.findByIdAndUpdate(req.params.id, {
+      $push: {
+        'coments': newcoment
+      }
+    }, {
+      new: true
+    },
+      function (err, data) {
+        console.log(err)
+      })
     res.redirect('/')
   })
 }
@@ -269,6 +305,10 @@ function updateprofile (req, res) {
     }, function (err, data) {
       if (err) console.error(err)
     })
+    // User.findById(req.user.id, function(err, targetuser) {
+    //   targetuser.isadmin = true
+    //   targetuser.save()
+    // })
   }
 
   if (req.body.passwordedit) {
@@ -282,11 +322,12 @@ function updateprofile (req, res) {
 
 function newprofilepic (req, res) {
   cloudinary.uploader.upload(req.file.path, function (result) {
-
     User.findByIdAndUpdate(req.user.id, {
       $set: {
         profilepics: result.url
       }
+    }, {
+      new: true
     }, function (err, data) {
       if (err) console.error(err)
 
@@ -297,17 +338,46 @@ function newprofilepic (req, res) {
 
 function newprofileban (req, res) {
   cloudinary.uploader.upload(req.file.path, function (result) {
-
     User.findByIdAndUpdate(req.user.id, {
       $set: {
         profilebanner: result.url
       }
+    }, {
+      new: true
     }, function (err, data) {
       if (err) console.error(err)
 
       res.redirect('/profile')
     })
   })
+}
+
+function bookmarkJson (req, res) {
+  // console.log('here in bookmark')
+  // console.log(req.user.id)
+  // console.log('I am here in the bookmark fn')
+
+  console.log('user is', req.user)
+  console.log('bookmarked article is', req.body.articleid)
+  console.log('current user articles are', req.user.articles)
+  var userArticles = req.user.articles.toString().split(',')
+  var currentArticle = req.body.articleid.toString()
+  var currentUser = req.user
+  console.log('current user articles are', userArticles)
+  console.log(userArticles)
+  if (userArticles.includes(currentArticle)) {
+    var index = req.user.articles.indexOf(req.body.articleid)
+    currentUser.articles.splice(index, 1)
+    currentUser.save(function (err, data) {
+      console.log(userArticles)
+      res.json(data)
+    })
+  } else {
+    currentUser.articles.unshift(currentArticle)
+    currentUser.save(function (err, data) {
+      res.json(data)
+    })
+  }
 }
 
 module.exports = {
@@ -324,5 +394,6 @@ module.exports = {
   editprofilepage: editprofilepage,
   updateprofile: updateprofile,
   newprofilepic: newprofilepic,
-  newprofileban: newprofileban
+  newprofileban: newprofileban,
+  bookmarkJson: bookmarkJson
 }

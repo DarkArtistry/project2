@@ -41,6 +41,9 @@ router.route('/')
 router.route('/profile')
 .get(controller.getprofile)
 
+router.route('/bookmark.json')
+.put(controller.bookmarkJson)
+
 // handle other users profile page
 router.route('/profile/:id')
 .get(controller.findprofile)
@@ -67,10 +70,10 @@ router.route('/editprofile/:id')
 
 //handle request update profile picture
 router.route('/newprofilepic')
-.post(upload.single('profilepic'), controller.newprofilepic)
+.put(upload.single('profilepic'), controller.newprofilepic)
 
 //handle request update profile banner
 router.route('/newprofileban')
-.post(upload.single('profileban'), controller.newprofileban)
+.put(upload.single('profileban'), controller.newprofileban)
 
 module.exports = router

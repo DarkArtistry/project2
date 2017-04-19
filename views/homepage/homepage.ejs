@@ -3,21 +3,26 @@
         <% articles.forEach(function(news){ %>
 
             <div class="singlearticle">
-                <form method="POST" action="/<%-news.id%>?_method=DELETE">
-                    <div>
-                        <% if(news.image) { %>
-                            <img src="<%- news.image %>" class="articlefields">
-                            <% } %>
-                    </div>
-                    <div>
-                        <h2 class="articlefields headers"><%- news.header %></h2>
-                    </div>
-                    <div>
-                        <p class="articlefields">
-                            <%- news.content.replace(/\r\n/g, "<br>") %>
-                        </p>
-                    </div>
-                </form>
+
+                <div>
+                    <% if(news.image) { %>
+                        <img src="<%- news.image %>" class="articlefields">
+                        <% } %>
+                </div>
+                <div>
+
+                    <span style="float: right">
+                    <button name="bookmark" value="<%- news.id %>" class="bookmarkbtn">Bookmark</button>
+                    </span>
+
+                    <h2 class="articlefields headers"><%- news.header %></h2>
+                </div>
+                <div>
+                    <p class="articlefields">
+                        <%- news.content.replace(/\r\n/g, "<br>") %>
+                    </p>
+                </div>
+
                 <div class="comentbox">
                     <form method="POST" action="/addcomment/<%- news.id %>">
                         <div>
