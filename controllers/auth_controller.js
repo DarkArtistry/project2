@@ -28,6 +28,7 @@ function homepage (req, res, next) {
       date: 'desc'
     })
     .exec(function (err, allposts) {
+      console.log(allposts)
       res.render('homepage/homepage', {
         isloggedin: (!(!req.user)),
         isadmin: req.user.isadmin,

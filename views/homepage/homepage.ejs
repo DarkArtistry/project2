@@ -24,6 +24,11 @@
                 <div>
                     <p class="articlefields">
                         <%- news.content.replace(/\r\n/g, "<br>") %>
+                            <p>Journalist:
+                                <a class="profilelink" href="/profile/<%- news.user.id %>">
+                                    <%- news.user.firstname %>
+                                </a>
+                            </p>
                     </p>
                 </div>
 
