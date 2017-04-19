@@ -36,7 +36,8 @@ function homepage (req, res, next) {
         date: todate,
         firstname: req.user.firstname,
         lastname: req.user.lastname,
-        articles: allposts
+        articles: allposts,
+        userarticles: req.user.articles.toString()
       })
     })
 }
@@ -370,7 +371,7 @@ function bookmarkJson (req, res) {
     currentUser.articles.splice(index, 1)
     currentUser.save(function (err, data) {
       console.log(userArticles)
-      res.json(data)
+      res.json(currentArticle)
     })
   } else {
     currentUser.articles.unshift(currentArticle)

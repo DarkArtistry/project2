@@ -10,12 +10,16 @@
                         <% } %>
                 </div>
                 <div>
-
-                    <span style="float: right">
-                    <button name="bookmark" value="<%- news.id %>" class="bookmarkbtn">Bookmark</button>
+                    <% if(userarticles.includes(news.id)) {%>
+                        <span style="float: right">
+                    <button name="bookmark" value="<%- news.id %>"  class="bookmarkbtn bm">Bookmark</button>
                     </span>
-
-                    <h2 class="articlefields headers"><%- news.header %></h2>
+                        <% } else {%>
+                            <span style="float: right">
+                      <button name="bookmark" value="<%- news.id %>"  class="bookmarkbtn">Bookmark</button>
+                      </span>
+                            <% }%>
+                                <h2 class="articlefields headers"><%- news.header %></h2>
                 </div>
                 <div>
                     <p class="articlefields">
