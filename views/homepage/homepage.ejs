@@ -1,57 +1,109 @@
 <div class='homepagewrapper'>
     <div class="newsfeed">
         <% articles.forEach(function(news){ %>
+            <% if(news.isheadline == true) {%>
+                <div class="headline-wrapper">
+                    <div>
+                        <% if(news.image) { %>
+                            <img src="<%- news.image %>" class="articlefields">
+                            <% } %>
+                    </div>
+                    <div>
+                        <% if(userarticles.includes(news.id)) {%>
+                            <span style="float: right">
+            <button name="bookmark" value="<%- news.id %>"  class="bookmarkbtn bm">Bookmark</button>
+            </span>
+                            <% } else {%>
+                                <span style="float: right">
+              <button name="bookmark" value="<%- news.id %>"  class="bookmarkbtn">Bookmark</button>
+              </span>
+                                <% }%>
+                                    <h2 class="articlefields headers">HEADLINES : <%- news.header %></h2>
+                    </div>
+                    <div>
+                        <p class="articlefields">
+                            <%- news.content.replace(/\r\n/g, "<br>") %>
+                                <p>Journalist:
+                                    <a class="profilelink" href="/profile/<%- news.user.id %>">
+                                        <%- news.user.firstname %>
+                                    </a>
+                                </p>
+                        </p>
+                    </div>
 
-            <div class="singlearticle">
+                    <div class="comentbox">
+                        <form method="POST" action="/addcomment/<%- news.id %>">
+                            <div>
+                                <input class="comentinput" type="text" maxlength="150" name="content" placeholder="Add a comment">
+                            </div>
+                        </form>
 
-                <div>
-                    <% if(news.image) { %>
-                        <img src="<%- news.image %>" class="articlefields">
-                        <% } %>
-                </div>
-                <div>
-                    <% if(userarticles.includes(news.id)) {%>
-                        <span style="float: right">
+
+                        <%  news.coments.forEach(function(coment){ %>
+                            <div>
+                                <p>
+                                    <span><a class="profilelink" href="/profile/<%- coment.user.id %>"><%- coment.user.firstname %>:</a></span>
+                                    <%- coment.content %>
+                                </p>
+                            </div>
+                            <%  }) %>
+                    </div>
+                    <% } %>
+                        <% }) %>
+
+                            <div class="grid">
+                                <div class="grid-sizer"></div>
+                                <% articles.forEach(function(news){ %>
+                                    <% if(news.isheadline === false) {%>
+                                        <div class="grid-item">
+
+                                            <div>
+                                                <% if(news.image) { %>
+                                                    <img src="<%- news.image %>" class="articlefields">
+                                                    <% } %>
+
+                                            </div>
+                                            <div>
+                                                <% if(userarticles.includes(news.id)) {%>
+                                                    <span style="float: right">
                     <button name="bookmark" value="<%- news.id %>"  class="bookmarkbtn bm">Bookmark</button>
                     </span>
-                        <% } else {%>
-                            <span style="float: right">
+                                                    <% } else {%>
+                                                        <span style="float: right">
                       <button name="bookmark" value="<%- news.id %>"  class="bookmarkbtn">Bookmark</button>
                       </span>
-                            <% }%>
-                                <h2 class="articlefields headers"><%- news.header %></h2>
-                </div>
-                <div>
-                    <p class="articlefields">
-                        <%- news.content.replace(/\r\n/g, "<br>") %>
-                            <p>Journalist:
-                                <a class="profilelink" href="/profile/<%- news.user.id %>">
-                                    <%- news.user.firstname %>
-                                </a>
-                            </p>
-                    </p>
-                </div>
+                                                        <% }%>
+                                                            <h2 class="articlefields headers"><%- news.header %></h2>
+                                            </div>
+                                            <div>
+                                                <p class="articlefields">
+                                                    <%- news.content.replace(/\r\n/g, "<br>") %>
+                                                        <p>Journalist:
+                                                            <a class="profilelink" href="/profile/<%- news.user.id %>">
+                                                                <%- news.user.firstname %>
+                                                            </a>
+                                                        </p>
+                                                </p>
+                                            </div>
 
-                <div class="comentbox">
-                    <form method="POST" action="/addcomment/<%- news.id %>">
-                        <div>
-                            <input class="comentinput" type="text" maxlength="150" name="content" placeholder="Add a comment">
-                        </div>
-                    </form>
-                    <%  news.coments.forEach(function(coment){ %>
-                        <div>
-                            <p>
-                                <span><a class="profilelink" href="/profile/<%- coment.user.id %>"><%- coment.user.firstname %>:</a></span>
-                                <%- coment.content %>
-                            </p>
-                        </div>
-                        <%  }) %>
+                                            <div class="comentbox">
+                                                <form method="POST" action="/addcomment/<%- news.id %>">
+                                                    <div>
+                                                        <input class="comentinput" type="text" maxlength="150" name="content" placeholder="Add a comment">
+                                                    </div>
+                                                </form>
+                                                <%  news.coments.forEach(function(coment){ %>
+                                                    <div>
+                                                        <p>
+                                                            <span><a class="profilelink" href="/profile/<%- coment.user.id %>"><%- coment.user.firstname %>:</a></span>
+                                                            <%- coment.content %>
+                                                        </p>
+                                                    </div>
+                                                    <%  }) %>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                            <% }) %>
+                            </div>
                 </div>
-                <% }) %>
-
-                    <form action='/logout' method='GET'>
-                        <button type='submit'>Logout</button>
-                    </form>
-            </div>
     </div>
-</div>

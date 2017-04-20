@@ -11,7 +11,7 @@
             <% } else { %>
                 <% articles.forEach(function(news){ %>
 
-                    <div class="singlearticle">
+                    <div class="singlearticleprofile">
                         <form method="POST" action="/<%-news.id%>?_method=DELETE">
                             <div>
                                 <% if(news.image) { %>

@@ -10,6 +10,10 @@
             <input class="articlefields" type="text" name="image" placeholder="Input GIF URL">
         </div>
         <div>
+            <label style="font-family: sans-serif" for="isheadline">Make Headline</label>
+            <input type="checkbox" id="isheadline" name="isheadline" value="true">
+        </div>
+        <div>
             <button class="articlefields" type="submit">Post</button>
         </div>
     </form>
@@ -17,7 +21,7 @@
 
 <% articles.forEach(function(news){ %>
 
-    <div class="singlearticle">
+    <div class="singlearticleprofile">
         <form method="POST" action="/<%-news.id%>?_method=DELETE">
             <div>
                 <% if(news.image) { %>

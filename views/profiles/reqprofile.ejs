@@ -5,9 +5,11 @@
         <h1>Welcome ! <%= firstname %>
             <%= lastname %> !</h1>
     </div>
+
+
     <% articles.forEach(function(news){ %>
 
-        <div class="singlearticle">
+        <div class="singlearticleprofile">
             <form method="POST" action="/<%-news.id%>?_method=DELETE">
                 <div>
                     <% if(news.image) { %>
@@ -41,4 +43,5 @@
             </div>
             <% }) %>
         </div>
+
 </div>

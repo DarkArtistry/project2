@@ -7,8 +7,8 @@ $(document).ready(function () {
     var $bookmarkid = $(this).val()
     $.ajax({
       type: 'PUT',
-      url: 'https://still-mesa-80925.herokuapp.com/bookmark.json',
-      // url: 'http://localhost:5000/bookmark.json',
+      // url: 'https://still-mesa-80925.herokuapp.com/bookmark.json',
+      url: 'http://localhost:5000/bookmark.json',
       data: {
         articleid: $bookmarkid
       }
@@ -23,4 +23,14 @@ $(document).ready(function () {
 
     })
   })
+
+  var $grid = $('.grid').masonry({
+    itemSelector: '.grid-item',
+    percentPosition: true,
+    columnWidth: '.grid-sizer'
+  });
+  // layout Isotope after each image loads
+  $grid.imagesLoaded().progress( function() {
+    $grid.masonry();
+  });  
 })

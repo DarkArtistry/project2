@@ -29,6 +29,7 @@ function homepage (req, res, next) {
     })
     .exec(function (err, allposts) {
       console.log(allposts)
+
       res.render('homepage/homepage', {
         isloggedin: (!(!req.user)),
         isadmin: req.user.isadmin,
@@ -140,13 +141,22 @@ function newarticle (req, res) {
     content: req.body.content,
     user: req.user.id,
     date: date,
-    isadmin: req.user.isadmin
+    isadmin: req.user.isadmin,
+    isheadline: req.body.isheadline
   }, function (err, newpost) {
     if (err) {
       // FLASH
       // console.log('An error occurred: ' + err)
       res.redirect('/')
     } else {
+
+      Article.find({isheadline: true}, function(err, oldheadline){
+        if (err) console.error(err)
+        if(oldheadline.length > 1) {
+        oldheadline[0].isheadline = false
+        oldheadline[0].save()
+      }
+      })
       // FLASH
       User.findByIdAndUpdate(req.user.id, {
         $push: {

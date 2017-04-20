@@ -27,7 +27,11 @@ var articleSchema = mongoose.Schema({
   coments: [{
     type: mongoose.Schema.ObjectId,
     ref: 'Coment'
-  }]
+  }],
+  isheadline: {
+    type: Boolean,
+    default: false
+  }
 })
 
 var Article = mongoose.model('Article', articleSchema)

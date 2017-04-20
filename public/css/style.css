@@ -219,9 +219,59 @@ button[type="submit"]:hover {
 }
 
 .singlearticle {
+  /*position: relative;*/
+  width: 30%;
+  /*display: inline-block;*/
+  background-color: rgba(187, 184, 184, 0.47);
+  /*margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: top;*/
+}
+
+/* ---- grid ---- */
+
+.grid {
+  background: #DDD;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.33%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+/*.articles-wrapper {
+  display: inline-flex;
+}*/
+
+.singlearticleprofile {
+  position: relative;
+  width: 100%;
+  display: inline-block;
   background-color: rgba(187, 184, 184, 0.47);
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headers {
@@ -230,7 +280,7 @@ button[type="submit"]:hover {
 }
 
 .newsfeed {
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -305,4 +355,9 @@ button[type="submit"]:hover {
 .dropdown {
   z-index: 1;
   position: absolute;
+}
+
+.headline-wrapper{
+  width: 80%;
+  margin: 10px auto;
 }
