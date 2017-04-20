@@ -1,4 +1,9 @@
 $(document).ready(function () {
+
+  // function setloginbackground () {
+  //
+  // }
+
   var $bookmarkbtn = $('.bookmarkbtn')
 
   $bookmarkbtn.on('click', function () {
