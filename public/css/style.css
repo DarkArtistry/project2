@@ -17,7 +17,8 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;*/
+  background-size: cover;
+  */
 }
 
 .facepic {
@@ -172,6 +173,7 @@ nav div {
   color: red;
 }
 
+
 /*@keyframes shake {
   0%, 100% {
     transform: translateX(0);
@@ -195,9 +197,9 @@ button[type="submit"]:hover {
 }
 
 .homepagewrapper {
-  width: 80%;
-  height: 100%;
+  width: 100%;
   margin: 0 auto;
+  background-color: skyblue;
 }
 
 .profile-wrapper {
@@ -231,27 +233,32 @@ button[type="submit"]:hover {
   background-color: grey;
 }
 
+
 /* ---- grid ---- */
 
 .grid {
   margin: 0 auto;
   width: 80%;
-  background: #DDD;
+  background-color: skyblue;
+  /*background: #DDD;*/
 }
 
+
 /* clear fix */
+
 .grid:after {
   content: '';
   display: block;
   clear: both;
 }
 
+
 /* ---- .grid-item ---- */
 
-.grid-sizer,
-.grid-item {
-  padding: 2px;
-  width: 32.8%;
+.grid-sizer, .grid-item {
+  padding: 0px;
+  border: 1px white solid;
+  width: 33.1%;
 }
 
 .grid-item {
@@ -262,6 +269,7 @@ button[type="submit"]:hover {
   display: block;
   max-width: 100%;
 }
+
 
 /*.articles-wrapper {
   display: inline-flex;
@@ -284,7 +292,7 @@ button[type="submit"]:hover {
 }
 
 .newsfeed {
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -303,11 +311,13 @@ button[type="submit"]:hover {
 }
 
 .comentbox {
+  margin: 0;
   background-color: #f6f7f9;
-  padding: 5px;
+  padding: 0px 5px 5px 5px;
 }
 
 .comentinput {
+  margin-top: 10px;
   width: 100%;
   font-size: 14px;
 }
@@ -362,7 +372,7 @@ button[type="submit"]:hover {
   position: absolute;
 }
 
-.headline-wrapper{
+.headline-wrapper {
   width: 80%;
-  margin: 10px auto;
+  margin: 20px auto;
 }
