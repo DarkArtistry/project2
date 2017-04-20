@@ -201,6 +201,7 @@ button[type="submit"]:hover {
 }
 
 .homepagewrapper {
+  min-height: 100%;
   width: 100%;
   margin: 0 auto;
   background-color: skyblue;
@@ -283,7 +284,7 @@ button[type="submit"]:hover {
   position: relative;
   width: 100%;
   display: inline-block;
-  background-color: #e9ebee;
+  background-color: skyblue;
   margin: 20px auto;
 }
 
