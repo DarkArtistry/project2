@@ -5,6 +5,13 @@ var Article = require('../models/post')
 var Coment = require('../models/coment')
 var multer = require('multer')
 var upload = multer({ dest: './uploads/' })
+// multer({
+//     dest    : './uploads/',
+//     onError : function(err, next) {
+//       console.log('error', err);
+//       next(err);
+//     }
+//   })
 var cloudinary = require('cloudinary')
 
 // render homepage

@@ -9,7 +9,7 @@
         <div>
             <input class="articlefields" type="text" name="image" placeholder="Input GIF URL">
         </div>
-        <div>
+        <div style="background-color: white; border: 1px">
             <label style="font-family: sans-serif" for="isheadline">Make Headline</label>
             <input type="checkbox" id="isheadline" name="isheadline" value="true">
         </div>
@@ -23,21 +23,26 @@
 
     <div class="singlearticleprofile">
         <form method="POST" action="/<%-news.id%>?_method=DELETE">
+
             <div>
                 <% if(news.image) { %>
                     <img src="<%- news.image %>" class="articlefields articleimage">
                     <% } %>
                         <span class="deletepost" style="float: right" name="articleid" value="<%= news.id %>"><button type="submit">Delete Post</button></span>
             </div>
+
             <div>
                 <h2 class="articlefields headers"><%- news.header %></h2>
             </div>
+
             <div>
                 <p class="articlefields">
                     <%- news.content.replace(/\r\n/g, "<br>") %>
                 </p>
             </div>
+
         </form>
+
         <div class="comentbox">
             <form method="POST" action="/addcomment">
                 <div>
@@ -45,5 +50,4 @@
                 </div>
             </form>
         </div>
-    </div>
     <% }) %>
