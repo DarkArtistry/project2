@@ -160,7 +160,7 @@ nav div {
   color: red;
 }
 
-@keyframes shake {
+/*@keyframes shake {
   0%, 100% {
     transform: translateX(0);
   }
@@ -170,7 +170,7 @@ nav div {
   20%, 40%, 60%, 80% {
     transform: translateX(10px);
   }
-}
+}*/
 
 button[type="submit"]:hover {
   background: #30D992;
@@ -233,6 +233,8 @@ button[type="submit"]:hover {
 /* ---- grid ---- */
 
 .grid {
+  margin: 0 auto;
+  width: 80%;
   background: #DDD;
 }
 
