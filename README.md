@@ -74,7 +74,22 @@ User.findById(req.params.id).populate({
 This made it even clearer
 [Deep Population Techniques](http://frontendcollisionblog.com/mongodb/2016/01/24/mongoose-populate.html)
 
-#### 3. Ajax
+#### 3. Text Area
+
+```
+<div>
+  <p class="articlefields">
+    <%- news.content.replace(/\r\n/g, "<br>") %>
+    <br>
+    Journalist:
+    <a class="profilelink" href="/profile/<%- news.user.id %>">
+      <%- news.user.firstname %>
+    </a>
+  </p>
+</div>
+```
+
+#### 4. Ajax
 
 So you have to declare a script, I declared it in my layouts to call a public folder to run my script.js, where one of the on click event triggers my Ajax
 
@@ -124,7 +139,7 @@ function bookmarkJson (req, res) {
 ```
 Which leads to the saving error I had
 
-#### 4. Saving - By Passing Pre-save w/ my User model
+#### 5. Saving - By Passing Pre-save w/ my User model
 
 ```
 userSchema.pre('save', function (next) {
@@ -150,7 +165,7 @@ Later I learn that i could do something like this:
 })
 ```
 
-#### 5. Finally The Newspaper Feel !
+#### 6. Finally The Newspaper Feel !
 
 I was introduced to [Mansory](http://masonry.desandro.com/#install)
 
